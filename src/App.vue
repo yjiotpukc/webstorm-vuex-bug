@@ -1,18 +1,20 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <h1>Counter is {{ value }}</h1>
+    <button @click="incrementCounter">Increment</button>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+
+import {mapMutations, mapState} from "vuex";
 
 export default {
   name: 'App',
-  components: {
-    HelloWorld
-  }
+  computed: mapState("counter", ["value"]),
+  methods: mapMutations({
+    incrementCounter: "counter/increment"
+  })
 }
 </script>
 
